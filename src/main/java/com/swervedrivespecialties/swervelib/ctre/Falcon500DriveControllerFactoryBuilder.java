@@ -81,17 +81,16 @@ public final class Falcon500DriveControllerFactoryBuilder {
                     "Failed to configure Falcon status frame period"
             );
 
-            return new ControllerImplementation(motor, sensorVelocityCoefficient, sensorPositionCoefficient);
+            return new ControllerImplementation(motor, sensorVelocityCoefficient);
         }
     }
 
     private class ControllerImplementation implements DriveController {
         private final TalonFX motor;
         private final double sensorVelocityCoefficient;
-        private final double sensorPositionCoefficient;
         private final double nominalVoltage = hasVoltageCompensation() ? Falcon500DriveControllerFactoryBuilder.this.nominalVoltage : 12.0;
 
-        private ControllerImplementation(TalonFX motor, double sensorVelocityCoefficient, double sensorPositionCoefficient) {
+        private ControllerImplementation(TalonFX motor, double sensorVelocityCoefficient) {
             this.motor = motor;
             this.sensorVelocityCoefficient = sensorVelocityCoefficient;
         }
@@ -104,11 +103,6 @@ public final class Falcon500DriveControllerFactoryBuilder {
         @Override
         public double getStateVelocity() {
             return motor.getSelectedSensorVelocity() * sensorVelocityCoefficient;
-        }
-
-        @Override
-        public double getPosition(){
-            return motor.getSelectedSensorPosition() * sensorPositionCoefficient;
         }
     }
 }
