@@ -56,6 +56,10 @@ public class SwerveModuleFactory<DriveConfiguration, SteerConfiguration> {
         public double getSteerAngle() {
             return steerController.getStateAngle();
         }
+        @Override
+        public double getPosition(){
+            return driveController.getPosition();
+        }
 
         @Override
         public void set(double driveVoltage, double steerAngle) {
