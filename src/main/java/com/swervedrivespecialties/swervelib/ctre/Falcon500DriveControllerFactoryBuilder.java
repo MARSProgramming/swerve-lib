@@ -107,6 +107,7 @@ public final class Falcon500DriveControllerFactoryBuilder {
         private ControllerImplementation(TalonFX motor, double sensorVelocityCoefficient, double sensorPositionCoefficient) {
             this.motor = motor;
             this.sensorVelocityCoefficient = sensorVelocityCoefficient;
+            this.sensorPositionCoefficient = sensorPositionCoefficient;
         }
 
         @Override
