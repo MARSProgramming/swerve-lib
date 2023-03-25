@@ -1,6 +1,7 @@
 package com.swervedrivespecialties.swervelib.ctre;
 
 import java.util.Objects;
+import edu.wpi.first.wpilibj.Timer;
 
 public class Falcon500SteerConfiguration<EncoderConfiguration> {
     private final int motorPort;
@@ -8,6 +9,7 @@ public class Falcon500SteerConfiguration<EncoderConfiguration> {
     private String canivoreName = "";
 
     public Falcon500SteerConfiguration(int motorPort, EncoderConfiguration encoderConfiguration) {
+        Timer.delay(1.0); 
         this.motorPort = motorPort;
         this.encoderConfiguration = encoderConfiguration;
         this.canivoreName = "";
