@@ -28,7 +28,7 @@ dependencies {
 
     // CTRE is implementation because it is not a hard requirement
     implementation 'com.ctre.phoenix:api-java:5.33.0'
-    implementation 'com.ctre.phoenix:wpiapi-java:5.33.0ev'
+    implementation 'com.ctre.phoenix:wpiapi-java:5.33.0'
 
     // REV is implementation because it is not a hard requirement
     implementation 'com.revrobotics.frc:REVLib-java:2023.1.3'
