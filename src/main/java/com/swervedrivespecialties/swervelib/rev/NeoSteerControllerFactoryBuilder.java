@@ -1,10 +1,18 @@
 package com.swervedrivespecialties.swervelib.rev;
 
-import com.revrobotics.*;
-import com.swervedrivespecialties.swervelib.*;
-import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardContainer;
-
 import static com.swervedrivespecialties.swervelib.rev.RevUtils.checkNeoError;
+
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel;
+import com.revrobotics.RelativeEncoder;
+import com.revrobotics.SparkMaxPIDController;
+import com.swervedrivespecialties.swervelib.AbsoluteEncoder;
+import com.swervedrivespecialties.swervelib.AbsoluteEncoderFactory;
+import com.swervedrivespecialties.swervelib.ModuleConfiguration;
+import com.swervedrivespecialties.swervelib.SteerController;
+import com.swervedrivespecialties.swervelib.SteerControllerFactory;
+
+import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardContainer;
 
 public final class NeoSteerControllerFactoryBuilder {
     // PID configuration
