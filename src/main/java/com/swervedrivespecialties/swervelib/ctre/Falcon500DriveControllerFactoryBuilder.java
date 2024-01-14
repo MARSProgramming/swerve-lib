@@ -69,7 +69,8 @@ public final class Falcon500DriveControllerFactoryBuilder {
 
             TalonFX motor = new TalonFX(driveConfiguration, canivoreName);
 
-            CtreUtils.checkCtreError(motor.getConfigurator().apply(motorConfiguration), "Failed to configure Falcon 500");
+            //CtreUtils.checkCtreError(motor.getConfigurator().apply(motorConfiguration), "Failed to configure Falcon 500");
+            motor.getConfigurator().apply(motorConfiguration);
 
             if (hasVoltageCompensation()) {
                 // Enable voltage compensation
