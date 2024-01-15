@@ -25,6 +25,7 @@ allprojects {
 
 dependencies {
     implementation 'edu.wpi.first.wpilibj:wpilibj-java:2024.1.1'
+    implementation 'edu.wpi.first.wpiutil:wpiutil-java:2024.1.1'
 
     // CTRE is implementation because it is not a hard requirement
     implementation 'com.ctre.phoenix6:wpiapi-java:24.1.0'
