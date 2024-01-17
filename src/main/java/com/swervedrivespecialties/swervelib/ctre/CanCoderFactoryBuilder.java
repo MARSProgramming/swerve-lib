@@ -12,7 +12,6 @@ public class CanCoderFactoryBuilder {
     private int periodMilliseconds = 10;
     private String canivoreName = "";
 
-
     public CanCoderFactoryBuilder withReadingUpdatePeriod(int periodMilliseconds) {
         this.periodMilliseconds = periodMilliseconds;
         return this;
@@ -42,7 +41,7 @@ public class CanCoderFactoryBuilder {
 
             CANcoder encoder = new CANcoder(configuration.getId(), canivoreName);
 
-            CtreUtils.checkCtreError(encoder.getAbsolutePosition().setUpdateFrequency(1/(periodMilliseconds/1000)), "Failed to configure CANCoder update rate");
+            CtreUtils.checkCtreError(encoder.getAbsolutePosition().setUpdateFrequency(1.0/(periodMilliseconds/1000.0)), "Failed to configure CANCoder update rate");
             CtreUtils.checkCtreError(encoder.getConfigurator().apply(config, 250), "Failed to configure CANCoder");
 
             return new EncoderImplementation(encoder);
