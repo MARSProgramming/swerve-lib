@@ -36,7 +36,7 @@ public class CanCoderFactoryBuilder {
         return configuration -> {
             CANcoderConfiguration config = new CANcoderConfiguration();
             config.MagnetSensor.AbsoluteSensorRange = AbsoluteSensorRangeValue.Unsigned_0To1;
-            config.MagnetSensor.MagnetOffset = Math.toDegrees(configuration.getOffset());
+            config.MagnetSensor.MagnetOffset = configuration.getOffset()/Math.PI/2.0;
             config.MagnetSensor.SensorDirection = direction == Direction.CLOCKWISE ? SensorDirectionValue.Clockwise_Positive : SensorDirectionValue.CounterClockwise_Positive;
 
             CANcoder encoder = new CANcoder(configuration.getId(), canivoreName);
@@ -57,7 +57,7 @@ public class CanCoderFactoryBuilder {
 
         @Override
         public double getAbsoluteAngle() {
-            double angle = Math.toRadians(encoder.getAbsolutePosition().getValueAsDouble() * 360);
+            double angle = Math.toRadians(encoder.getAbsolutePosition().getValueAsDouble() * 360.0);
             angle %= 2.0 * Math.PI;
             if (angle < 0.0) {
                 angle += 2.0 * Math.PI;
