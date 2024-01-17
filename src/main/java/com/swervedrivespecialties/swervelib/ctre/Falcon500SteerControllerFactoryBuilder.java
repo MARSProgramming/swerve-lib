@@ -112,9 +112,9 @@ public final class Falcon500SteerControllerFactoryBuilder {
 
             TalonFXConfiguration motorConfiguration = new TalonFXConfiguration();
             if (hasPidConstants()) {
-                motorConfiguration.Slot0.kP = proportionalConstant * 2 * nominalVoltage;
-                motorConfiguration.Slot0.kI = integralConstant * 2 * nominalVoltage;
-                motorConfiguration.Slot0.kD = derivativeConstant * 2 * nominalVoltage;
+                motorConfiguration.Slot0.kP = proportionalConstant;
+                motorConfiguration.Slot0.kI = integralConstant;
+                motorConfiguration.Slot0.kD = derivativeConstant;
             }
             if (hasMotionMagic()) {
                 if (hasVoltageCompensation()) {
