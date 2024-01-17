@@ -57,11 +57,6 @@ public final class Falcon500DriveControllerFactoryBuilder {
             double sensorPositionCoefficient = Math.PI * moduleConfiguration.getWheelDiameter() * moduleConfiguration.getDriveReduction() / TICKS_PER_ROTATION;
             double sensorVelocityCoefficient = sensorPositionCoefficient;
 
-            if (hasVoltageCompensation()) {
-                //TODO: fix this
-                //motorConfiguration.Voltage.PeakForwardVoltage = nominalVoltage;
-            }
-
             if (hasCurrentLimit()) {
                 motorConfiguration.CurrentLimits.SupplyCurrentLimit = currentLimit;
                 motorConfiguration.CurrentLimits.SupplyCurrentLimitEnable = true;
@@ -71,12 +66,6 @@ public final class Falcon500DriveControllerFactoryBuilder {
 
             CtreUtils.checkCtreError(motor.getConfigurator().apply(motorConfiguration), "Failed to configure Falcon 500");
             //motor.getConfigurator().apply(motorConfiguration);
-
-            if (hasVoltageCompensation()) {
-                // Enable voltage compensation
-                //motor.enableVoltageCompensation(true);
-                //TODO: fix this
-            }
 
             motor.setNeutralMode(NeutralModeValue.Brake);
 
@@ -100,7 +89,7 @@ public final class Falcon500DriveControllerFactoryBuilder {
 
         @Override
         public void setReferenceVoltage(double voltage) {
-            motor.set(voltage / nominalVoltage);
+            motor.setVoltage(voltage);
         }
 
         @Override
