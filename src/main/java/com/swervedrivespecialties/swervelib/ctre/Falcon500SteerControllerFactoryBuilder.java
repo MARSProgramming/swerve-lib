@@ -31,7 +31,7 @@ public final class Falcon500SteerControllerFactoryBuilder {
     private double accelerationConstant = Double.NaN;
     private double staticConstant = Double.NaN;
 
-    private double nominalVoltage = Double.NaN;
+    private double nominalVoltage = 12;
     private double currentLimit = Double.NaN;
 
     private String canivoreName = "";
@@ -112,9 +112,9 @@ public final class Falcon500SteerControllerFactoryBuilder {
 
             TalonFXConfiguration motorConfiguration = new TalonFXConfiguration();
             if (hasPidConstants()) {
-                motorConfiguration.Slot0.kP = proportionalConstant;
-                motorConfiguration.Slot0.kI = integralConstant;
-                motorConfiguration.Slot0.kD = derivativeConstant;
+                motorConfiguration.Slot0.kP = proportionalConstant * nominalVoltage;
+                motorConfiguration.Slot0.kI = integralConstant * nominalVoltage;
+                motorConfiguration.Slot0.kD = derivativeConstant * nominalVoltage;
             }
             if (hasMotionMagic()) {
                 if (hasVoltageCompensation()) {
