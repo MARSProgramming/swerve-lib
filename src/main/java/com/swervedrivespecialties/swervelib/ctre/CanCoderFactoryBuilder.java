@@ -37,7 +37,7 @@ public class CanCoderFactoryBuilder {
             CANcoderConfiguration config = new CANcoderConfiguration();
             config.MagnetSensor.AbsoluteSensorRange = AbsoluteSensorRangeValue.Unsigned_0To1;
             config.MagnetSensor.MagnetOffset = configuration.getOffset()/Math.PI/2.0;
-            config.MagnetSensor.SensorDirection = direction == Direction.CLOCKWISE ? SensorDirectionValue.Clockwise_Positive : SensorDirectionValue.CounterClockwise_Positive;
+            config.MagnetSensor.SensorDirection = direction == Direction.CLOCKWISE ? SensorDirectionValue.CounterClockwise_Positive : SensorDirectionValue.Clockwise_Positive;
 
             CANcoder encoder = new CANcoder(configuration.getId(), canivoreName);
 
