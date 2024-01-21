@@ -135,7 +135,7 @@ public final class Falcon500SteerControllerFactoryBuilder {
             TalonFX motor = new TalonFX(steerConfiguration.getMotorPort(), steerConfiguration.getCanivoreName());
             CtreUtils.checkCtreError(motor.getConfigurator().apply(motorConfiguration, CAN_TIMEOUT_MS), "Failed to configure Falcon 500 settings");
             
-            motor.setInverted(moduleConfiguration.isSteerInverted());
+            motor.setInverted(!moduleConfiguration.isSteerInverted());
             motor.setNeutralMode(NeutralModeValue.Brake);
 
             CtreUtils.checkCtreError(motor.setPosition(absoluteEncoder.getAbsoluteAngle() / sensorPositionCoefficient), "Failed to set Falcon 500 encoder position");
