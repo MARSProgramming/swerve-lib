@@ -69,7 +69,7 @@ public final class Falcon500DriveControllerFactoryBuilder {
 
             motor.setNeutralMode(NeutralModeValue.Brake);
 
-            motor.setInverted(moduleConfiguration.isDriveInverted());
+            motor.setInverted(!moduleConfiguration.isDriveInverted());
 
             return new ControllerImplementation(motor, sensorVelocityCoefficient, sensorPositionCoefficient);
         }
