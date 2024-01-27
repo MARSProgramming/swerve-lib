@@ -30,18 +30,6 @@ public final class Mk4iSwerveModuleHelper {
                         .build());
     }
 
-    private static SteerControllerFactory<?, Falcon500SteerConfiguration<CanCoderAbsoluteConfiguration>> getKrakenX60SteerFactory(Mk4ModuleConfiguration configuration) {
-        return new Falcon500SteerControllerFactoryBuilder()
-                .withVoltageCompensation(configuration.getNominalVoltage())
-                .withPidConstants(0.1, 0.0, 0.05)
-                .withCurrentLimit(configuration.getSteerCurrentLimit())
-                .withCanivoreName(configuration.getCanivoreName())
-                .build(new CanCoderFactoryBuilder()
-                        .withReadingUpdatePeriod(100)
-                        .withCanivoreName(configuration.getCanivoreName())
-                        .build());
-    }
-
     private static DriveControllerFactory<?, Integer> getNeoDriveFactory(Mk4ModuleConfiguration configuration) {
         return new NeoDriveControllerFactoryBuilder()
                 .withVoltageCompensation(configuration.getNominalVoltage())
@@ -86,30 +74,6 @@ public final class Mk4iSwerveModuleHelper {
                 gearRatio.getConfiguration(),
                 getFalcon500DriveFactory(configuration),
                 getFalcon500SteerFactory(configuration)
-        ).create(
-                container,
-                driveMotorPort,
-                new Falcon500SteerConfiguration<>(
-                        steerMotorPort,
-                        new CanCoderAbsoluteConfiguration(steerEncoderPort, steerOffset),
-                        configuration.getCanivoreName()
-                )
-        );
-    }
-
-    public static SwerveModule createKrakenX60(
-            ShuffleboardLayout container,
-            Mk4ModuleConfiguration configuration,
-            GearRatio gearRatio,
-            int driveMotorPort,
-            int steerMotorPort,
-            int steerEncoderPort,
-            double steerOffset
-    ) {
-        return new SwerveModuleFactory<>(
-                gearRatio.getConfiguration(),
-                getFalcon500DriveFactory(configuration),
-                getKrakenX60SteerFactory(configuration)
         ).create(
                 container,
                 driveMotorPort,
